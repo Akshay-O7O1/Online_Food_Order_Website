@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Bite Box</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="images/logo.png" alt="Bite Box Logo" class="logo-img me-2">
+                Bite Box
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-arrow-left me-1"></i>Back to Menu
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h4 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Checkout Details</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="checkout-form">
+                                <!-- Personal Information -->
+                                <div class="mb-4">
+                                    <h5 class="border-bottom pb-2">Personal Information</h5>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="firstName" class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" id="firstName" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="lastName" class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" id="lastName" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="email" class="form-label">Email *</label>
+                                            <input type="email" class="form-control" id="email" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="phone" class="form-label">Phone Number *</label>
+                                            <input type="tel" class="form-control" id="phone" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Delivery Address -->
+                                <div class="mb-4">
+                                    <h5 class="border-bottom pb-2">Delivery Address</h5>
+                                    <div class="mb-3">
+                                        <label for="savedAddresses" class="form-label">Saved Addresses</label>
+                                        <select class="form-select" id="savedAddresses">
+                                            <option value="">Select a saved address or add new</option>
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <label for="address" class="form-label">Street Address *</label>
+                                            <input type="text" class="form-control" id="address"
+                                                placeholder="House/Flat No, Street Name" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="city" class="form-label">City *</label>
+                                            <input type="text" class="form-control" id="city" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="pincode" class="form-label">Pincode *</label>
+                                            <input type="text" class="form-control" id="pincode" required>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <label for="landmark" class="form-label">Landmark (Optional)</label>
+                                            <input type="text" class="form-control" id="landmark"
+                                                placeholder="Near landmark">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="button" class="btn btn-outline-primary" id="getCurrentLocation">
+                                            <i class="fas fa-map-marker-alt me-2"></i>Use Current Location
+                                        </button>
+                                        <button type="button" class="btn btn-outline-success ms-2" id="saveAddress">
+                                            <i class="fas fa-save me-2"></i>Save This Address
+                                        </button>
+                                    </div>
+                                    <!-- Map Container -->
+                                    <div id="map" style="height: 300px; border-radius: 10px;" class="mb-3"></div>
+                                </div>
+
+                                <!-- Delivery Options -->
+                                <div class="mb-4">
+                                    <h5 class="border-bottom pb-2">Delivery Options</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-check delivery-option">
+                                                <input class="form-check-input" type="radio" name="deliveryType"
+                                                    id="standard" value="standard" checked>
+                                                <label class="form-check-label" for="standard">
+                                                    <strong>Standard Delivery (30-45 mins)</strong><br>
+                                                    <small class="text-muted">Free delivery</small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check delivery-option">
+                                                <input class="form-check-input" type="radio" name="deliveryType"
+                                                    id="express" value="express">
+                                                <label class="form-check-label" for="express">
+                                                    <strong>Express Delivery (15-20 mins)</strong><br>
+                                                    <small class="text-muted">₹50 extra</small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Payment Method -->
+                                <div class="mb-4">
+                                    <h5 class="border-bottom pb-2">Payment Method</h5>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-check payment-option">
+                                                <input class="form-check-input" type="radio" name="paymentMethod"
+                                                    id="cod" value="cod" checked>
+                                                <label class="form-check-label" for="cod">
+                                                    <i class="fas fa-money-bill-wave me-2"></i>Cash on Delivery
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check payment-option">
+                                                <input class="form-check-input" type="radio" name="paymentMethod"
+                                                    id="upi" value="upi">
+                                                <label class="form-check-label" for="upi">
+                                                    <i class="fab fa-google-pay me-2"></i>UPI Payment
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check payment-option">
+                                                <input class="form-check-input" type="radio" name="paymentMethod"
+                                                    id="card" value="card">
+                                                <label class="form-check-label" for="card">
+                                                    <i class="fas fa-credit-card me-2"></i>Credit/Debit Card
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Special Instructions -->
+                                <div class="mb-4">
+                                    <h5 class="border-bottom pb-2">Special Instructions</h5>
+                                    <textarea class="form-control" id="instructions" rows="3"
+                                        placeholder="Any special instructions for delivery..."></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="card shadow sticky-top">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0"><i class="fas fa-receipt me-2"></i>Order Summary</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="order-items">
+                                <!-- Order items will be loaded here -->
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">₹0</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Delivery Fee:</span>
+                                <span id="delivery-fee">₹0</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <span>Taxes:</span>
+                                <span id="taxes">₹0</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between fw-bold fs-5">
+                                <span>Total:</span>
+                                <span id="total-amount">₹0</span>
+                            </div>
+                            <!-- <button type="button" class="btn btn-outline-info w-100 mb-2" id="recalculate-total">
+                                <i class="fas fa-calculator me-2"></i>Recalculate Total
+                            </button> -->
+                            <button type="button" class="btn btn-success w-100" id="place-order">
+                                <i class="fas fa-check me-2"></i>Place Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvJSeHrVKaSr57c5imBsZPcdUziEQHMDo&callback=initMap"
+        async defer></script>
+    <script src="js/checkout.js"></script>
+</body>
+
+</html>""

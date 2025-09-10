@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Bite Box</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <img src="images/logo.png" alt="Bite Box Logo" class="logo-img me-2">
+                Bite Box
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-home me-1"></i>Home
+                </a>
+                <a class="nav-link" href="my-orders.html">
+                    <i class="fas fa-list me-1"></i>My Orders
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card shadow">
+                        <div class="card-body text-center">
+                            <img src="images/user-avatar.jpg" alt="Profile Picture" class="rounded-circle mb-3" width="120" height="120" style="object-fit: cover;">
+                            <h5 class="card-title">John Doe</h5>
+                            <p class="text-muted">Bite Box Member since 2024</p>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-camera me-1"></i>Change Photo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="card shadow mt-4">
+                        <div class="card-header bg-success text-white">
+                            <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Quick Stats</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <h4 class="text-primary">15</h4>
+                                    <small class="text-muted">Total Orders</small>
+                                </div>
+                                <div class="col-6">
+                                    <h4 class="text-success">₹2,450</h4>
+                                    <small class="text-muted">Total Spent</small>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <h5 class="text-warning">Gold Member</h5>
+                                <small class="text-muted">Next level: Platinum (₹550 more)</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <!-- Profile Information -->
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="fas fa-user me-2"></i>Profile Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="profile-form">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstName" value="Akshay">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastName" value="Pandey">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" value="akshay.pandey@example.com">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="phone" value="+91 9876543210">
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" id="dateOfBirth" value="1999-01-07">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>Update Profile
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Saved Addresses -->
+                    <div class="card shadow mt-4">
+                        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Saved Addresses</h6>
+                            <button class="btn btn-light btn-sm" id="add-address-btn">
+                                <i class="fas fa-plus me-1"></i>Add New
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="saved-addresses">
+                                <!-- Addresses will be loaded here -->
+                                <div class="address-item p-3 border rounded mb-3">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">Home</h6>
+                                            <p class="text-muted mb-0">
+                                                123 Main Street, Near Kalaghoda<br>
+                                                Vadodara, 390001<br>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-outline-primary btn-sm me-1">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-outline-danger btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="address-item p-3 border rounded mb-3">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h6 class="mb-1">Office</h6>
+                                            <p class="text-muted mb-0">
+                                                456 Business Park, New Alkapuri<br>
+                                                Vadodara, 390002<br>
+                                                Near Bank of Baroda
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-outline-primary btn-sm me-1">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-outline-danger btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="card shadow mt-4">
+                        <div class="card-header bg-warning text-dark">
+                            <h6 class="mb-0"><i class="fas fa-cog me-2"></i>Preferences</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                        <label class="form-check-label" for="emailNotifications">
+                                            Email Notifications
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="smsNotifications" checked>
+                                        <label class="form-check-label" for="smsNotifications">
+                                            SMS Notifications
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="orderUpdates" checked>
+                                        <label class="form-check-label" for="orderUpdates">
+                                            Order Updates
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="promotionalOffers">
+                                        <label class="form-check-label" for="promotionalOffers">
+                                            Promotional Offers
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-success">
+                                <i class="fas fa-save me-2"></i>Save Preferences
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Profile form submission
+            $('#profile-form').submit(function(e) {
+                e.preventDefault();
+                
+                // Show success message
+                const alert = $(`
+                    <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                        <i class="fas fa-check-circle me-2"></i>Profile updated successfully!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `);
+                
+                $('body').append(alert);
+                setTimeout(() => alert.alert('close'), 3000);
+            });
+
+            // Add placeholder for user avatar
+            $('img[src="images/user-avatar.jpg"]').on('error', function() {
+                $(this).attr('src', 'https://via.placeholder.com/120x120/007bff/ffffff?text=User');
+            });
+        });
+    </script>
+</body>
+</html>
